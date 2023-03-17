@@ -1,9 +1,9 @@
 '''
 Author: Iccccy.xie
 Date: 2023-03-17 15:14:08
-LastEditTime: 2023-03-17 22:18:21
+LastEditTime: 2023-03-17 22:26:20
 LastEditors: Iccccy.xie(binicey@outlook.com)
-FilePath: /AI-lab/model-all/1-mmdetection-self-config/retinanet_resnet50_fpn_neu_coco.py
+FilePath: /1-mmdetection-self-config/retinanet_resnet50_fpn_neu_coco.py
 '''
 _base_ = [
     '../_base_/models/retinanet_r50_fpn.py',
@@ -15,7 +15,7 @@ _base_ = [
 model = dict(
     bbox_head=dict(num_classes=6))
 optimizer = dict(type='SGD', lr=0.001, momentum=0.5, weight_decay=0.0001)
-runner = dict(type='EpochBasedRunner', max_epochs=3)
+runner = dict(type='EpochBasedRunner', max_epochs=50)
 
 
 # Modify dataset related settings
@@ -52,7 +52,7 @@ test_pipeline = [
 ]
 
 data = dict(
-    samples_per_gpu=2,
+    samples_per_gpu=32,
     workers_per_gpu=2,
     train=dict(
         img_prefix=
