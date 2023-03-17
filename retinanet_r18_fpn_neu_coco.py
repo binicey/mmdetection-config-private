@@ -1,7 +1,7 @@
 '''
 Author: Iccccy.xie
 Date: 2023-03-17 15:14:08
-LastEditTime: 2023-03-17 21:49:36
+LastEditTime: 2023-03-17 22:07:57
 LastEditors: Iccccy.xie(binicey@outlook.com)
 FilePath: /AI-lab/model-all/mmdetection-self-config/retinanet_r18_fpn_neu_coco.py
 '''
@@ -13,10 +13,6 @@ _base_ = [
 
 # optimizer
 model = dict(
-    backbone=dict(
-        depth=18,
-        init_cfg=dict(type='Pretrained', checkpoint='torchvision://resnet18')),
-    neck=dict(in_channels=[64, 128, 256, 512]),
     bbox_head=dict(num_classes=6))
 optimizer = dict(type='SGD', lr=0.005, momentum=0.5, weight_decay=0.0001)
 
